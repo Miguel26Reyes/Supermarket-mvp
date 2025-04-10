@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Supermarket_mvp.Views
 {
-    public partial class PayModeView: Form
+    public partial class PageModeView: Form
     {
-        public PayModeView()
+        public PageModeView()
         {
             InitializeComponent();
         }
