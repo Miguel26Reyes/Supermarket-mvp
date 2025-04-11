@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace Supermarket_mvp.Views
 {
-    public partial class PageModeView: Form
+    public partial class PayModeView : Form
     {
-        public PageModeView()
+        public PayModeView()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
