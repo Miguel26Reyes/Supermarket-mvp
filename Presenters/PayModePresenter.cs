@@ -59,12 +59,43 @@ namespace Supermarket_mvp.Presenters
 
         private void SavePaymode(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var payMode = new PayModeModel();
+            payMode.Id = string.IsNullOrWhiteSpace(view.PayModeId) ? 0 : Convert.ToInt32(view.PayModeId);
+            payMode.Name = view.PayModeName;
+            payMode.Observation = view.PayModeObservation;
+
+            try 
+            {
+                if (view.IsEdit) 
+                {
+                    repository.Edit(payMode);
+                    view.Message = "PayMode edited succesfuly";
+                }
+                else 
+                {
+                    repository.Add(payMode);
+                    view.Message = "ApyMode addes succesfuly";
+                }
+            }
+            catch(Exception ex) 
+            {
+                view.IsSuccessful = true;
+                LoadAllPayModelist();
+                CleanViewFields();
+            }
+
+        }
+
+        private void CleanViewFields()
+        {
+            view.PayModeId = "0";
+            view.PayModeName = "";
+            view.PayModeObservation = "";
         }
 
         private void CancelAction(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
         }
 
         private void DeleteSelectedPayMode(object? sender, EventArgs e)
@@ -74,12 +105,18 @@ namespace Supermarket_mvp.Presenters
 
         private void AddNewPayMode(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = false;
         }
 
         private void LoadSelectPayModeToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var payMode = (PayModeModel)payModeBindingSource.Current;
+
+            view.PayModeId = payMode.Id.ToString();
+            view.PayModeName = payMode.Name;
+            view.PayModeObservation = payMode.Observation;
+
+            view.IsEdit = true;
         }
 
         

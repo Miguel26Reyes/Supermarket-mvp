@@ -19,7 +19,16 @@ namespace Supermarket_mvp._Repositories
         }
         public void Add(PayModeModel payModeModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var commad = new SqlCommand())
+            {
+                connection.Open();
+                commad.Connection = connection;
+                commad.CommandText = "INSERT INTO Pay Mode VALUES (@name, @Observation)";
+                commad.Parameters.Add("@name", SqlDbType.NVarChar).Value = payModeModel.Name;
+                commad.Parameters.Add("@observation", SqlDbType.NVarChar).Value = payModeModel.Observation;
+                commad.ExecuteNonQuery();
+            }
         }
 
         public void Delete(int id)
@@ -29,7 +38,19 @@ namespace Supermarket_mvp._Repositories
 
         public void Edit(PayModeModel payModeModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var commad = new SqlCommand())
+            {
+                connection.Open();
+                commad.Connection = connection;
+                commad.CommandText = @"UPDATE PayMode
+                                       SET Pay_Mode_Name =@name,
+                                       Pay_ModeObservation =@observation
+                                       WHERE Pay_Mode_Id = @id";
+                commad.Parameters.Add(@"name", SqlDbType.NVarChar).Value = payModeModel.Name;
+                commad.Parameters.Add("@id", SqlDbType.Int).Value = payModeModel.Id;
+                commad.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<PayModeModel> GetAll()
