@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
             BtnPayMode = new Button();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -46,6 +46,16 @@
             panel1.Size = new Size(200, 450);
             panel1.TabIndex = 0;
             // 
+            // BtnPayMode
+            // 
+            BtnPayMode.BackgroundImage = (Image)resources.GetObject("BtnPayMode.BackgroundImage");
+            BtnPayMode.BackgroundImageLayout = ImageLayout.Zoom;
+            BtnPayMode.Location = new Point(12, 73);
+            BtnPayMode.Name = "BtnPayMode";
+            BtnPayMode.Size = new Size(174, 99);
+            BtnPayMode.TabIndex = 1;
+            BtnPayMode.UseVisualStyleBackColor = true;
+            // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
@@ -57,22 +67,13 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // BtnPayMode
-            // 
-            BtnPayMode.BackgroundImage = (Image)resources.GetObject("BtnPayMode.BackgroundImage");
-            BtnPayMode.BackgroundImageLayout = ImageLayout.Zoom;
-            BtnPayMode.Location = new Point(12, 73);
-            BtnPayMode.Name = "BtnPayMode";
-            BtnPayMode.Size = new Size(174, 99);
-            BtnPayMode.TabIndex = 1;
-            BtnPayMode.UseVisualStyleBackColor = true;
-            // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panel1);
+            IsMdiContainer = true;
             Name = "MainView";
             Text = "Supermarket";
             panel1.ResumeLayout(false);
